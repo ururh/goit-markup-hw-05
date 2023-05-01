@@ -30,6 +30,7 @@ body{
     font-family: Roboto, sans-serif;
     color: var(--text-color);
     background-color: var(--focus-button);
+    padding-top: 73px;
 }
 
 ul {
@@ -70,6 +71,9 @@ address {
 }
 
 /* header-nav */
+.header-portfolio{
+    z-index: 1;
+}
 
 .header {
     position: fixed;
@@ -211,7 +215,7 @@ margin-right: 40px;
     display: block;
     min-width: 169px;
     margin: 0 auto;
-    transition:background-color var(--anim-transition);
+    transition: background-color var(--anim-transition),  color var(--anim-transition);
 
 }
 
@@ -388,8 +392,7 @@ margin-right: 40px;
     border: 1px solid var(--background-button);
     border-radius: 4px;
     padding: 12px 24px;
-    transition: color var(--anim-transition);
-    transition: background-color var(--anim-transition);
+    transition: color var(--anim-transition), background-color var(--anim-transition);
 }
 
 .buttons:hover,
@@ -411,7 +414,7 @@ margin-right: 40px;
 
 .app-link{
     display: block;
-    transition: color var(--anim-transition);
+    transition: box-shadow var(--anim-transition);
 }
 .app-title {
     padding: 32px 16px;
@@ -499,7 +502,7 @@ padding: 120px 0;
     align-items: center;
     justify-content: center;
     color: var(--logo);
-    transition: color var(--anim-transition);
+    transition: color var(--anim-transition), border-color var(--anim-transition);
 }
 
 .logo-link:hover,
@@ -603,6 +606,8 @@ padding: 120px 0;
     min-height: 584px;
     background-color: var(--modal);
     transition: transform var(--anim-transition);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
 }
 
 .backdrop.is-hidden .modal {
@@ -613,13 +618,15 @@ padding: 120px 0;
     position: absolute;
     right: 24px;
     top: 24px;
+    display: flex;
     align-items: center;
-        justify-content: center;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background-color: var(--background-button);
-        fill: var(--title-text-color);
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--background-button);
+    fill: var(--title-text-color);
+    transition: background-color var(--anim-transition), fill var(--anim-transition);
 }
 
 .close-btn:hover,
