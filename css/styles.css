@@ -8,6 +8,8 @@
     --footer-text:#F4F4FD;
     --footer-focus-link:#31D0AA;
     --logo:#8E8F99;
+    --anim-transition:250ms linear;
+    --modal:#FCFCFC;
             
 }
 
@@ -70,6 +72,11 @@ address {
 /* header-nav */
 
 .header {
+    position: fixed;
+    width: 100%;
+        top: 0;
+        left: 0;
+        background-color: var(--footer-text);
     border-bottom: 1px solid var(--background-button);
     box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
 }
@@ -114,8 +121,22 @@ margin-right: 40px;
     letter-spacing: 0.02em;
     color: var(--title-text-color);
     padding: 24px 0;
+    transition: color var(--anim-transition);
+    display: block;
+    position: relative;
 }
 
+.active::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: -1px;
+    background-color: var(--focus-text);
+    left: 0;
+    border-radius: 2px;
+
+}
 .links:hover,
 .links:focus {
     color: var(--focus-text);
@@ -139,6 +160,7 @@ margin-right: 40px;
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: var(--text-color);
+    transition: color var(--anim-transition);
 }
 
 .contact:hover,
@@ -189,6 +211,7 @@ margin-right: 40px;
     display: block;
     min-width: 169px;
     margin: 0 auto;
+    transition:background-color var(--anim-transition);
 
 }
 
@@ -313,6 +336,7 @@ margin-right: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: var(--text-button);
+    transition: background-color var(--anim-transition);
 }
 
 .social-link:hover,
@@ -364,6 +388,8 @@ margin-right: 40px;
     border: 1px solid var(--background-button);
     border-radius: 4px;
     padding: 12px 24px;
+    transition: color var(--anim-transition);
+    transition: background-color var(--anim-transition);
 }
 
 .buttons:hover,
@@ -385,6 +411,7 @@ margin-right: 40px;
 
 .app-link{
     display: block;
+    transition: color var(--anim-transition);
 }
 .app-title {
     padding: 32px 16px;
@@ -395,6 +422,11 @@ margin-right: 40px;
 .app-link:hover,
 .app-link:focus{
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.app-link:hover .overlay,
+.app-link:focus .overlay{
+    transform: translateY(0%);
 }
 
 .app-item {
@@ -409,6 +441,28 @@ margin-right: 40px;
     color: var(--title-text-color);
     margin-bottom: 8px;
 
+}
+
+.thumb{
+position: relative;
+overflow: hidden;
+}
+
+.overlay{
+    font-size: 16px;
+        line-height: calc(24 / 16);
+        letter-spacing: 0.02em;
+    color: var(--footer-text);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--text-button);
+    padding: 40px 32px;
+    transform: translateY(100%);
+    transition: transform var(--anim-transition);
 }
 
 /* Customers */
@@ -445,12 +499,13 @@ padding: 120px 0;
     align-items: center;
     justify-content: center;
     color: var(--logo);
+    transition: color var(--anim-transition);
 }
 
 .logo-link:hover,
 .logo-link:focus {
     border-color:var(--focus-text);
-    color:var(--focus-text)   
+    color:var(--focus-text);  
 }
 
     .logo{
@@ -513,9 +568,63 @@ padding: 120px 0;
     height: 40px;
     border-radius: 50%;
     background-color: var(--text-button);
+    transition: background-color var(--anim-transition);
 }
 
 .footer-link:hover,
 .footer-link:focus {
     background-color: var(--footer-focus-link);
 }
+
+/* modal */
+
+.backdrop.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(46, 47, 66, 0.4);
+    transition: opacity var(--anim-transition), visibility var(--anim-transition);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 408px;
+    min-height: 584px;
+    background-color: var(--modal);
+    transition: transform var(--anim-transition);
+}
+
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) rotate(0.6);
+}
+
+.close-btn {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: var(--background-button);
+        fill: var(--title-text-color);
+}
+
+.close-btn:hover,
+.close-btn:focus{
+    background-color: var(--focus-text);
+    fill: var(--focus-button);
+}
+
