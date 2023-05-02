@@ -392,7 +392,7 @@ margin-right: 40px;
     border: 1px solid var(--background-button);
     border-radius: 4px;
     padding: 12px 24px;
-    transition: color var(--anim-transition), background-color var(--anim-transition);
+    transition: color var(--anim-transition), background-color var(--anim-transition), border var(--anim-transition), box-shadow var(--anim-transition);
 }
 
 .buttons:hover,
